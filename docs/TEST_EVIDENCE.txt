@@ -1,0 +1,472 @@
++==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 3   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S3001 | Name: Marie Curie | Age: 22 | Program: Physics | Level: Bachelor | Study Year: 2
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 4   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65): [ERROR] Value must be between 15 and 65.
+  > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S3003 | Name: Invalid Age Demo | Age: 20 | Program: Mathematics | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [ERROR] Student Id 'S1001' already exists.
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ENROLL STUDENT IN COURSE -----
+  > Student Id:   > Course Code: [ERROR] Student 'S1001' is already enrolled in course 'CS201'.
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ENROLL STUDENT IN COURSE -----
+  > Student Id:   > Course Code: [ERROR] Student 'S9999' was not found.
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- COURSES OF A STUDENT -----
+  > Student Id: [INFO] Id: S1001 | Name: Ada Lovelace | Age: 20 | Program: Computer Science | Level: Bachelor | Study Year: 2
+[INFO] Enrolled course count: 2/5
+   1. Code: CS101 | Title: Introduction to Programming | Capacity: 3 | Enrolled on: 2026-11-16
+   2. Code: CS201 | Title: Object-Oriented Programming | Capacity: 40 | Enrolled on: 2026-11-16
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- STUDENTS BY PROGRAM -----
+  > Degree Program: [INFO] Found 2 student(s) in 'Computer Science':
+   1. Id: S1001 | Name: Ada Lovelace | Age: 20 | Program: Computer Science | Level: Bachelor | Study Year: 2
+   2. Id: S2001 | Name: Alan Turing | Age: 24 | Program: Computer Science | Level: Master | Thesis: Computability Theory
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 5   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S3002 | Name: Young Student | Age: 15 | Program: Biology | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 6   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S4001 | Name: Stu One | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 7   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S4002 | Name: Stu Two | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 8   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- REGISTER STUDENT -----
+  Student Type:
+    B - Bachelor Student
+    M - Master Student
+  > Enter type (B/M):   > Student Id:   > Full Name:   > Age (15-65):   > Degree Program:   > Study Year (1-4): [SUCCESS] Bachelor student registered successfully.
+[INFO] Id: S4003 | Name: Stu Three | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 4
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ENROLL STUDENT IN COURSE -----
+  > Student Id:   > Course Code: [SUCCESS] Enrollment completed successfully.
+[INFO] Enrollment: ENR-0005-215032 | Student: S4001 (Stu One) | Course: CS101 (Introduction to Programming) | Date: 2026-11-16 21:50
+[INFO] Remaining seats in CS101: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 5
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ENROLL STUDENT IN COURSE -----
+  > Student Id:   > Course Code: [SUCCESS] Enrollment completed successfully.
+[INFO] Enrollment: ENR-0006-215032 | Student: S4002 (Stu Two) | Course: CS101 (Introduction to Programming) | Date: 2026-11-16 21:50
+[INFO] Remaining seats in CS101: 0
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 6
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ENROLL STUDENT IN COURSE -----
+  > Student Id:   > Course Code: [ERROR] Course 'CS101' is full. No remaining seats.
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 6
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ALL ENROLLMENTS -----
+   1. Enrollment: ENR-0001-215032 | Student: S1001 (Ada Lovelace) | Course: CS101 (Introduction to Programming) | Date: 2026-11-16 21:50
+   2. Enrollment: ENR-0002-215032 | Student: S1001 (Ada Lovelace) | Course: CS201 (Object-Oriented Programming) | Date: 2026-11-16 21:50
+   3. Enrollment: ENR-0003-215032 | Student: S2001 (Alan Turing) | Course: CS501 (Advanced Algorithms) | Date: 2026-11-16 21:50
+   4. Enrollment: ENR-0004-215032 | Student: S1002 (Grace Hopper) | Course: CS201 (Object-Oriented Programming) | Date: 2026-11-16 21:50
+   5. Enrollment: ENR-0005-215032 | Student: S4001 (Stu One) | Course: CS101 (Introduction to Programming) | Date: 2026-11-16 21:50
+   6. Enrollment: ENR-0006-215032 | Student: S4002 (Stu Two) | Course: CS101 (Introduction to Programming) | Date: 2026-11-16 21:50
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 6
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: 
+----- ALL STUDENTS -----
+   1. Id: S1001 | Name: Ada Lovelace | Age: 20 | Program: Computer Science | Level: Bachelor | Study Year: 2
+   2. Id: S2001 | Name: Alan Turing | Age: 24 | Program: Computer Science | Level: Master | Thesis: Computability Theory
+   3. Id: S1002 | Name: Grace Hopper | Age: 21 | Program: Software Engineering | Level: Bachelor | Study Year: 3
+   4. Id: S3001 | Name: Marie Curie | Age: 22 | Program: Physics | Level: Bachelor | Study Year: 2
+   5. Id: S3003 | Name: Invalid Age Demo | Age: 20 | Program: Mathematics | Level: Bachelor | Study Year: 1
+   6. Id: S3002 | Name: Young Student | Age: 15 | Program: Biology | Level: Bachelor | Study Year: 1
+   7. Id: S4001 | Name: Stu One | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+   8. Id: S4002 | Name: Stu Two | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+   9. Id: S4003 | Name: Stu Three | Age: 19 | Program: CS | Level: Bachelor | Study Year: 1
+
+Press Enter to continue...+==============================================================+
+|  01. STUDENT MANAGEMENT SYSTEM                             |
++==============================================================+
+  Students: 9   |   Courses: 3   |   Enrollments: 6
+--------------------------------------------------------------
+  1.  Register Student
+  2.  Create Course
+  3.  Enroll Student in Course
+  4.  Drop Enrollment
+  5.  List All Students
+  6.  List All Courses
+  7.  List All Enrollments
+  8.  Search Student by Id
+  9.  Search Course by Code
+ 10.  View Courses of a Student
+ 11.  View Course Roster
+ 12.  Remove Student
+ 13.  Remove Course
+ 14.  Display Students by Program
+  0.  Exit
+--------------------------------------------------------------
+  > Select an option: [SUCCESS] Exiting Student Management System. Goodbye!

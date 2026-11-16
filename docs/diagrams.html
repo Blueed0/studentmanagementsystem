@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>01 Student Management System — Diagrams</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+  <style>
+    body { font-family: Georgia, serif; margin: 2rem; background: #f7f7f5; color: #1a1a1a; }
+    h1, h2 { font-family: "Segoe UI", sans-serif; }
+    .box { background: #fff; border: 1px solid #ddd; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+    .note { color: #555; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>01. Student Management System — Diagrams</h1>
+  <p class="note">Authors: Yigit Ali Engin, Nihat Yaman Celen · Open this file in a browser, then screenshot each diagram for the PDF/Word report if needed.</p>
+
+  <div class="box">
+    <h2>UML Class Diagram</h2>
+    <pre class="mermaid">
+classDiagram
+    direction TB
+    class IIdentifiable {
+        <<interface>>
+        +string Id
+    }
+    class Student {
+        <<abstract>>
+        -string _id
+        -string _fullName
+        -int _age
+        -string _degreeProgram
+        +string Id
+        +string FullName
+        +int Age
+        +string DegreeProgram
+        +GetAcademicLevel()* string
+        +GetStudentDetails() string
+    }
+    class BachelorStudent {
+        -int _studyYear
+        +int StudyYear
+        +GetAcademicLevel() string
+        +GetStudentDetails() string
+    }
+    class MasterStudent {
+        -string _thesisTopic
+        +string ThesisTopic
+        +GetAcademicLevel() string
+        +GetStudentDetails() string
+    }
+    class Course {
+        -string _id
+        -string _title
+        -int _capacity
+        +string Id
+        +string Title
+        +int Capacity
+        +GetCourseDetails() string
+    }
+    class Enrollment {
+        -string _enrollmentId
+        -Student _student
+        -Course _course
+        -DateTime _enrollmentDate
+        +string EnrollmentId
+        +Student Student
+        +Course Course
+        +DateTime EnrollmentDate
+        +GetEnrollmentDetails() string
+    }
+    class UniversityManager {
+        -List~Student~ _students
+        -List~Course~ _courses
+        -List~Enrollment~ _enrollments
+        +RegisterBachelorStudent(...)
+        +RegisterMasterStudent(...)
+        +CreateCourse(...)
+        +EnrollStudent(...)
+        +DropEnrollment(...)
+        +GetStudentsByProgram(...)
+        +CountEnrollmentsForStudent(...)
+    }
+    class Program {
+        -UniversityManager _manager$
+        +Main(args)$ void
+    }
+    IIdentifiable <|.. Student
+    IIdentifiable <|.. Course
+    Student <|-- BachelorStudent
+    Student <|-- MasterStudent
+    Enrollment --> Student
+    Enrollment --> Course
+    UniversityManager o-- Student
+    UniversityManager o-- Course
+    UniversityManager o-- Enrollment
+    Program --> UniversityManager
+    </pre>
+  </div>
+
+  <div class="box">
+    <h2>Main Menu Flowchart</h2>
+    <pre class="mermaid">
+flowchart TD
+    A([Start Program]) --> B[Load sample seed data]
+    B --> C[Show Main Menu]
+    C --> D[Read menu option]
+    D --> E{Option?}
+    E -->|1-14 features| F[Run selected handler]
+    E -->|0| T([Exit])
+    E -->|invalid| U[Show error]
+    F --> V[Pause / Enter]
+    U --> V
+    V --> C
+    </pre>
+  </div>
+
+  <div class="box">
+    <h2>Enroll Student Decision Flow</h2>
+    <pre class="mermaid">
+flowchart TD
+    A([Enroll Student]) --> B[Read Student Id and Course Code]
+    B --> C{Student found?}
+    C -->|No| R1[Reject unknown student]
+    C -->|Yes| D{Course found?}
+    D -->|No| R2[Reject unknown course]
+    D -->|Yes| E{Already enrolled?}
+    E -->|Yes| R3[Reject duplicate]
+    E -->|No| F{Seats remaining?}
+    F -->|No| R4[Reject course full]
+    F -->|Yes| G{Courses under max 5?}
+    G -->|No| R5[Reject max courses]
+    G -->|Yes| H[Create and store Enrollment]
+    H --> S([Success])
+    R1 --> X([State unchanged])
+    R2 --> X
+    R3 --> X
+    R4 --> X
+    R5 --> X
+    </pre>
+  </div>
+</body>
+</html>
