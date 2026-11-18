@@ -1,0 +1,7 @@
+services:
+  student-management:
+    build: .
+    image: student-management-system:latest
+    container_name: student-management-system
+    stdin_open: true
+    tty: true

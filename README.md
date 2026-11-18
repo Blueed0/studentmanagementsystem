@@ -14,10 +14,38 @@ C# / .NET 8 console application for the OOP midterm case study **01. Student Man
 
 ## Requirements
 
-- .NET SDK 8.0 or later
-- Windows / macOS / Linux terminal
+Pick one:
 
-## How to run
+- **Option A:** Docker Desktop (easiest on any PC)
+- **Option B:** .NET SDK 8.0 or later
+
+## How to run with Docker (recommended)
+
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), then from the project folder:
+
+**Windows:**
+
+```bat
+run-docker.cmd
+```
+
+**macOS / Linux / any terminal:**
+
+```bash
+docker compose build
+docker compose run --rm student-management
+```
+
+Or without compose:
+
+```bash
+docker build -t student-management-system .
+docker run --rm -it student-management-system
+```
+
+Interactive menu needs `-it` / TTY. Stop with menu option `0` or `Ctrl+C`.
+
+## How to run with .NET SDK
 
 From the project folder:
 
@@ -28,7 +56,7 @@ run.cmd
 Or:
 
 ```bat
-"C:\Program Files\dotnet\dotnet.exe" run --project StudentManagementSystem.csproj
+dotnet run --project StudentManagementSystem.csproj
 ```
 
 Sample fictional data is loaded at startup so the menu can be demonstrated immediately.
@@ -38,6 +66,9 @@ Sample fictional data is loaded at startup so the menu can be demonstrated immed
 ```text
 StudentManagementSystem/
 ├── Program.cs                      Console UI / menu
+├── Dockerfile                      Container build
+├── docker-compose.yml              Easy run on any PC
+├── run-docker.cmd                  One-click Docker start (Windows)
 ├── Interfaces/IIdentifiable.cs     Shared Id contract
 ├── Models/
 │   ├── Student.cs                  Abstract base student
@@ -48,6 +79,7 @@ StudentManagementSystem/
 ├── Services/UniversityManager.cs   Business rules / registry
 └── docs/                           Report, UML, tests, statements
 ```
+
 
 ## Documentation package
 
