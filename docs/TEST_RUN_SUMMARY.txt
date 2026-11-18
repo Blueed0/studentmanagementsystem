@@ -1,7 +1,0 @@
-TC01_register: PASS
-TC02_invalid_age: PASS
-TC03_dup_id: PASS
-TC04_dup_enroll: PASS
-TC05_unknown: PASS
-TC06_count_program_list: PASS
-OVERALL: PASS

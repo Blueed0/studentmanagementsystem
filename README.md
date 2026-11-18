@@ -44,16 +44,4 @@ Models/MasterStudent.cs
 Models/Course.cs
 Models/Enrollment.cs
 Services/UniversityManager.cs
-docs/   report, UML, tests, statements
 ```
-
-## Docs
-
-| File | Purpose |
-|------|---------|
-| `docs/REPORT.md` | Tasks 1–6 report |
-| `docs/UML_CLASS_DIAGRAM.md` | UML |
-| `docs/TEST_CASES.md` | Test evidence |
-| `docs/MEMBER_CONTRIBUTIONS.md` | Contributions |
-| `docs/AI_USE_STATEMENT.md` | AI disclosure |
-| `submission/` | Word exports |
