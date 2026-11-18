@@ -4,11 +4,20 @@ C# / .NET 8 console application.
 
 **Authors:** Yigit Ali Engin, Nihat Yaman Celen
 
-## Run
+## Run (any Windows PC)
 
-1. Install .NET 8 SDK: https://dotnet.microsoft.com/download/dotnet/8.0
-2. Open project folder
-3. Run:
+1. Install **.NET 8 SDK** (not only Runtime): https://dotnet.microsoft.com/download/dotnet/8.0
+2. Restart the PC
+3. Open a **new** Command Prompt and check:
+
+```bat
+dotnet --version
+```
+
+If this fails with "dosya bulunamadığından yürütülemedi", Windows has a fake `dotnet` alias. Install the real SDK from the link above, then disable App execution aliases for `dotnet.exe` if needed:
+Settings → Apps → Advanced app settings → App execution aliases → turn OFF `dotnet.exe`.
+
+4. Clone/pull the repo, open the project folder, run:
 
 ```bat
 run.cmd
@@ -19,6 +28,8 @@ or:
 ```bat
 dotnet run --project StudentManagementSystem.csproj
 ```
+
+If it still fails, open `.cursor\debug-a1d337.log` and share that file.
 
 ## Menu
 
