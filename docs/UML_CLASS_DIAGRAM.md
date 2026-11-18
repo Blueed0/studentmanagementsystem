@@ -1,8 +1,6 @@
 # UML Class Diagram — 01. Student Management System
 
-The diagram below matches the implemented C# solution. Render it in any Mermaid-compatible viewer (GitHub, VS Code Mermaid extension, mermaid.live), then export/screenshot for the PDF report if needed.
-
-## Diagram
+Matches the implemented C# code. View in VS Code Mermaid preview or https://mermaid.live
 
 ```mermaid
 classDiagram
@@ -26,13 +24,12 @@ classDiagram
         #Student(id, fullName, age, degreeProgram)
         +GetAcademicLevel()* string
         +GetStudentDetails() string
-        +ToString() string
     }
 
     class BachelorStudent {
         -int _studyYear
         +int StudyYear
-        +BachelorStudent(id, fullName, age, degreeProgram, studyYear)
+        +BachelorStudent(...)
         +GetAcademicLevel() string
         +GetStudentDetails() string
     }
@@ -40,7 +37,7 @@ classDiagram
     class MasterStudent {
         -string _thesisTopic
         +string ThesisTopic
-        +MasterStudent(id, fullName, age, degreeProgram, thesisTopic)
+        +MasterStudent(...)
         +GetAcademicLevel() string
         +GetStudentDetails() string
     }
@@ -54,7 +51,6 @@ classDiagram
         +int Capacity
         +Course(id, title, capacity)
         +GetCourseDetails() string
-        +ToString() string
     }
 
     class Enrollment {
@@ -66,65 +62,39 @@ classDiagram
         +Student Student
         +Course Course
         +DateTime EnrollmentDate
-        +Enrollment(enrollmentId, student, course, enrollmentDate)
+        +Enrollment(...)
         +GetEnrollmentDetails() string
-        +ToString() string
     }
 
     class UniversityManager {
         -List~Student~ _students
         -List~Course~ _courses
         -List~Enrollment~ _enrollments
-        +int MaxCoursesPerStudent$
-        +RegisterBachelorStudent(...) BachelorStudent
-        +RegisterMasterStudent(...) MasterStudent
-        +FindStudentById(id) Student
-        +GetAllStudents() List~Student~
-        +GetStudentsByProgram(program) List~Student~
-        +RemoveStudent(studentId) void
-        +CreateCourse(id, title, capacity) Course
-        +FindCourseById(id) Course
-        +GetAllCourses() List~Course~
-        +GetRemainingSeats(courseId) int
-        +RemoveCourse(courseId) void
-        +EnrollStudent(studentId, courseId) Enrollment
-        +DropEnrollment(studentId, courseId) void
-        +CountEnrollmentsForStudent(studentId) int
-        +GetEnrollmentsByStudent(studentId) List~Enrollment~
-        +GetEnrollmentsByCourse(courseId) List~Enrollment~
+        +RegisterBachelorStudent(...)
+        +RegisterMasterStudent(...)
+        +CreateCourse(...)
+        +EnrollStudent(...)
+        +GetStudentsByProgram(...)
+        +CountEnrollmentsForStudent(...)
+        +GetAllEnrollments(...)
     }
 
-    class Program {
-        -UniversityManager _manager$
-        +Main(args)$ void
-    }
-
-    IIdentifiable <|.. Student : realizes
-    IIdentifiable <|.. Course : realizes
-    Student <|-- BachelorStudent : inheritance
-    Student <|-- MasterStudent : inheritance
+    IIdentifiable <|.. Student
+    IIdentifiable <|.. Course
+    Student <|-- BachelorStudent
+    Student <|-- MasterStudent
     Enrollment --> Student : association
     Enrollment --> Course : association
-    UniversityManager o-- Student : manages
-    UniversityManager o-- Course : manages
-    UniversityManager o-- Enrollment : manages
-    Program --> UniversityManager : uses
+    UniversityManager o-- Student
+    UniversityManager o-- Course
+    UniversityManager o-- Enrollment
 ```
 
-## Relationships and multiplicities
+## Relationships
 
-| Relationship | Type | Multiplicity | Meaning |
-|--------------|------|--------------|---------|
-| `BachelorStudent` / `MasterStudent` → `Student` | Inheritance | 1 | Specialized student kinds reuse common fields |
-| `Student` / `Course` → `IIdentifiable` | Realization | 1 | Shared read-only `Id` contract |
-| `Enrollment` → `Student` | Association | many enrollments : 1 student | A student may have 0..5 enrollments |
-| `Enrollment` → `Course` | Association | many enrollments : 1 course | A course may have 0..Capacity enrollments |
-| `UniversityManager` → collections | Composition-like ownership | 1 manager owns many records | In-memory registry; UI never mutates lists directly |
-| `Program` → `UniversityManager` | Dependency / use | 1 | Console UI delegates all business rules |
-
-## Consistency with code
-
-- Abstract `Student` + overrides in `BachelorStudent` / `MasterStudent` → polymorphism
-- Private fields + validated properties → encapsulation
-- `Enrollment` stores object references (not only IDs) → association / composition-style link object
-- `UniversityManager` concentrates CRUD and rejection rules → clear class responsibility separation from UI
+| Relationship | Type | Meaning |
+|--------------|------|---------|
+| Bachelor/Master → Student | Inheritance | Specialized student types |
+| Student/Course → IIdentifiable | Interface | Shared Id contract |
+| Enrollment → Student/Course | Association | One enrollment links one student to one course |
+| UniversityManager → lists | Ownership | In-memory registry for CRUD and rules |

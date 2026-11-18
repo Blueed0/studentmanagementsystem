@@ -1,113 +1,77 @@
-namespace StudentManagementSystem.Models // Kayıt (enrollment) modelinin bulunduğu isim alanı
+namespace StudentManagementSystem.Models
 {
-    // Enrollment: Bir öğrenci ile bir ders arasındaki ilişkiyi (association) temsil eder
-    public class Enrollment // Kompozisyon/ilişki nesnesi: Student ve Course referanslarını tutar
+    // Association object between one Student and one Course.
+    public class Enrollment
     {
-        // _enrollmentId: Kayıt kaydının benzersiz kimliğini tutan özel alan
-        private string _enrollmentId = string.Empty; // Başlangıç değeri; gerçek kimlik constructor'da atanır
+        private string _enrollmentId = string.Empty;
+        private Student _student = null!;
+        private Course _course = null!;
+        private DateTime _enrollmentDate;
 
-        // _student: Kayıtlı öğrenci nesnesine referans tutan özel alan
-        private Student _student = null!; // Association: Enrollment bir Student'a bağlıdır; constructor'da kesin atanır
-
-        // _course: Kayıtlı ders nesnesine referans tutan özel alan
-        private Course _course = null!; // Association: Enrollment bir Course'a bağlıdır; constructor'da kesin atanır
-
-        // _enrollmentDate: Kaydın oluşturulma zamanını tutan özel alan
-        private DateTime _enrollmentDate; // Ne zaman kayıt yapıldığını gösterir
-
-        // EnrollmentId: Kayıt kimliğini salt-okunur şekilde dışarı açar
-        public string EnrollmentId // Dışarıdan değiştirilemez
+        public string EnrollmentId
         {
-            get { return _enrollmentId; } // Private kimliği okur
-            private set // Yalnızca sınıf içinde atanabilir
+            get { return _enrollmentId; }
+            private set
             {
-                // Kimlik boş/null/whitespace ise reddet
-                if (string.IsNullOrWhiteSpace(value)) // Geçersiz kimlik kontrolü
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    // Boş kayıt kimliği için ArgumentException fırlatılır
-                    throw new ArgumentException("Enrollment Id cannot be empty."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Enrollment Id cannot be empty.");
+                }
 
-                // Geçerli kimliği kırpılmış halde saklar
-                _enrollmentId = value.Trim(); // Tutarlı kimlik saklama
-            } // EnrollmentId setter'ının sonu
-        } // EnrollmentId özelliğinin sonu
+                _enrollmentId = value.Trim();
+            }
+        }
 
-        // Student: İlişkili öğrenci nesnesini salt-okunur şekilde dışarı açar
-        public Student Student // Association ucu: öğrenci
+        public Student Student
         {
-            get { return _student; } // Private öğrenci referansını okur
-            private set // Yalnızca yapıcıda atanır
+            get { return _student; }
+            private set
             {
-                // Öğrenci referansı null ise reddet
-                if (value == null) // Null association engellenir
+                if (value == null)
                 {
-                    // Null öğrenci için ArgumentNullException fırlatılır
-                    throw new ArgumentNullException(nameof(value), "Enrollment must reference a student."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentNullException(nameof(value), "Enrollment must reference a student.");
+                }
 
-                // Geçerli öğrenci referansını saklar
-                _student = value; // Association bağlantısını kurar
-            } // Student setter'ının sonu
-        } // Student özelliğinin sonu
+                _student = value;
+            }
+        }
 
-        // Course: İlişkili ders nesnesini salt-okunur şekilde dışarı açar
-        public Course Course // Association ucu: ders
+        public Course Course
         {
-            get { return _course; } // Private ders referansını okur
-            private set // Yalnızca yapıcıda atanır
+            get { return _course; }
+            private set
             {
-                // Ders referansı null ise reddet
-                if (value == null) // Null association engellenir
+                if (value == null)
                 {
-                    // Null ders için ArgumentNullException fırlatılır
-                    throw new ArgumentNullException(nameof(value), "Enrollment must reference a course."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentNullException(nameof(value), "Enrollment must reference a course.");
+                }
 
-                // Geçerli ders referansını saklar
-                _course = value; // Association bağlantısını kurar
-            } // Course setter'ının sonu
-        } // Course özelliğinin sonu
+                _course = value;
+            }
+        }
 
-        // EnrollmentDate: Kayıt tarihini salt-okunur şekilde dışarı açar
-        public DateTime EnrollmentDate // Dışarıdan değiştirilemez
+        public DateTime EnrollmentDate
         {
-            get { return _enrollmentDate; } // Private tarihi okur
-            private set // Yalnızca yapıcıda atanır
-            {
-                // Tarihi private alana yazar
-                _enrollmentDate = value; // Kayıt anını saklar
-            } // EnrollmentDate setter'ının sonu
-        } // EnrollmentDate özelliğinin sonu
+            get { return _enrollmentDate; }
+            private set { _enrollmentDate = value; }
+        }
 
-        // Enrollment yapıcı metodu: İlişki nesnesini güvenli şekilde oluşturur
-        public Enrollment(string enrollmentId, Student student, Course course, DateTime enrollmentDate) // Tüm zorunlu alanları alır
+        public Enrollment(string enrollmentId, Student student, Course course, DateTime enrollmentDate)
         {
-            // EnrollmentId property setter'ı üzerinden kimliği doğrula ve ata
-            EnrollmentId = enrollmentId; // Boş kimlikler burada reddedilir
+            EnrollmentId = enrollmentId;
+            Student = student;
+            Course = course;
+            EnrollmentDate = enrollmentDate;
+        }
 
-            // Student property setter'ı üzerinden öğrenci referansını doğrula ve ata
-            Student = student; // null öğrenci burada reddedilir
-
-            // Course property setter'ı üzerinden ders referansını doğrula ve ata
-            Course = course; // null ders burada reddedilir
-
-            // EnrollmentDate property setter'ı üzerinden tarihi ata
-            EnrollmentDate = enrollmentDate; // Kayıt zamanını saklar
-        } // Enrollment yapıcı metodunun sonu
-
-        // GetEnrollmentDetails: Kayıt bilgisini okunabilir tek satır olarak üretir
-        public string GetEnrollmentDetails() // Listeleme ekranlarında kullanılır
+        public string GetEnrollmentDetails()
         {
-            // Kayıt kimliği, öğrenci, ders ve tarihi biçimlendirilmiş metin olarak döndürür
-            return $"Enrollment: {EnrollmentId} | Student: {Student.Id} ({Student.FullName}) | Course: {Course.Id} ({Course.Title}) | Date: {EnrollmentDate:yyyy-MM-dd HH:mm}"; // Tutarlı özet
-        } // GetEnrollmentDetails metodunun sonu
+            return $"Enrollment: {EnrollmentId} | Student: {Student.Id} ({Student.FullName}) | Course: {Course.Id} ({Course.Title}) | Date: {EnrollmentDate:yyyy-MM-dd HH:mm}";
+        }
 
-        // ToString: Konsolda Enrollment yazdırılırken anlamlı metin gösterir
-        public override string ToString() // Object.ToString'i ezer
+        public override string ToString()
         {
-            // Detay metodunu yeniden kullanarak tutarlı çıktı sağlar
-            return GetEnrollmentDetails(); // Aynı formatı kullanır
-        } // ToString metodunun sonu
-    } // Enrollment sınıfının sonu
-} // StudentManagementSystem.Models isim alanının sonu
+            return GetEnrollmentDetails();
+        }
+    }
+}

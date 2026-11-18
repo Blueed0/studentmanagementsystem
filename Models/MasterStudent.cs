@@ -1,49 +1,37 @@
-namespace StudentManagementSystem.Models // Yüksek lisans öğrencisi modelinin bulunduğu isim alanı
+namespace StudentManagementSystem.Models
 {
-    // MasterStudent: Student soyut sınıfından türeyen yüksek lisans öğrencisi sınıfı
-    public class MasterStudent : Student // Kalıtım ile ortak öğrenci davranışını yeniden kullanır
+    public class MasterStudent : Student
     {
-        // _thesisTopic: Yüksek lisans tez konusunu tutan özel alan
-        private string _thesisTopic = string.Empty; // Nullable uyarısını önlemek için güvenli başlangıç
+        private string _thesisTopic = string.Empty;
 
-        // ThesisTopic: Tez konusunu doğrulayarak dışarı açan özellik
-        public string ThesisTopic // Zorunlu metin alanı
+        public string ThesisTopic
         {
-            get { return _thesisTopic; } // Private alandaki tez konusunu okur
-            set // Atama sırasında boş değer kontrolü yapar
+            get { return _thesisTopic; }
+            set
             {
-                // Tez konusu boş/null/whitespace ise reddet
-                if (string.IsNullOrWhiteSpace(value)) // Zorunlu alan doğrulaması
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    // Geçersiz tez konusu için ArgumentException fırlatılır
-                    throw new ArgumentException("Thesis topic cannot be empty."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Thesis topic cannot be empty.");
+                }
 
-                // Geçerli tez konusunu kırpılmış halde saklar
-                _thesisTopic = value.Trim(); // Tutarlı metin saklama
-            } // ThesisTopic setter'ının sonu
-        } // ThesisTopic özelliğinin sonu
+                _thesisTopic = value.Trim();
+            }
+        }
 
-        // MasterStudent yapıcı metodu: Temel Student alanlarını ve ThesisTopic'i başlatır
-        public MasterStudent(string id, string fullName, int age, string degreeProgram, string thesisTopic) // public: dışarıdan örnek oluşturulabilir
-            : base(id, fullName, age, degreeProgram) // base(...): üst sınıf yapıcısını çağırarak ortak alanları kurar
+        public MasterStudent(string id, string fullName, int age, string degreeProgram, string thesisTopic)
+            : base(id, fullName, age, degreeProgram)
         {
-            // ThesisTopic property setter'ı üzerinden konuyu doğrula ve ata
-            ThesisTopic = thesisTopic; // Boş konular burada reddedilir
-        } // MasterStudent yapıcı metodunun sonu
+            ThesisTopic = thesisTopic;
+        }
 
-        // GetAcademicLevel: Yüksek lisans seviyesini polimorfik olarak döndürür
-        public override string GetAcademicLevel() // abstract metodun zorunlu uygulaması
+        public override string GetAcademicLevel()
         {
-            // Bu öğrenci türünün akademik seviyesini sabit metin olarak bildirir
-            return "Master"; // Polimorfizm örneği: runtime'da bu sürüm çağrılır
-        } // GetAcademicLevel metodunun sonu
+            return "Master";
+        }
 
-        // GetStudentDetails: Yüksek lisansa özgü tez konusunu da ekleyerek ayrıntı üretir
-        public override string GetStudentDetails() // virtual metodu ezer (override)
+        public override string GetStudentDetails()
         {
-            // Üst sınıf özetine tez konusu bilgisini ekler
-            return $"{base.GetStudentDetails()} | Thesis: {ThesisTopic}"; // base. ile ortak detayı yeniden kullanır
-        } // GetStudentDetails metodunun sonu
-    } // MasterStudent sınıfının sonu
-} // StudentManagementSystem.Models isim alanının sonu
+            return $"{base.GetStudentDetails()} | Thesis: {ThesisTopic}";
+        }
+    }
+}

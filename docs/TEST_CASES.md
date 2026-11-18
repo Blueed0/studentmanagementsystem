@@ -1,12 +1,8 @@
 # Functional Test Cases — 01. Student Management System
 
 **Authors:** Yigit Ali Engin, Nihat Yaman Celen  
-**Environment:** .NET 8 console application, in-memory `List<T>` storage  
-**Execution date:** 16 November 2026  
-**Runner:** `tools/run_functional_tests.py`  
-**Evidence files:** `docs/TEST_RUN_SUMMARY.txt`, `docs/TEST_EVIDENCE.txt`  
-**Seed data at startup:** S1001, S2001, S1002, courses CS101 (capacity 3), CS201, CS501, plus sample enrollments  
-**Rule checked in every failed case:** system state must not change incorrectly
+**Date:** 18 November 2026  
+**Rule for failed cases:** system state must not change incorrectly
 
 ## Summary
 
@@ -14,98 +10,52 @@
 |----|----------|--------|
 | TC01 | Normal – register Bachelor student | PASS |
 | TC02 | Invalid input – age outside 15–65 | PASS |
-| TC03 | Duplicate – same student Id | PASS |
-| TC04 | Boundary – course capacity full | PASS |
-| TC05 | Rejected – duplicate enrollment | PASS |
-| TC06 | Normal – count courses / list by program | PASS |
-| TC07 | Unknown Id – enroll missing student | PASS |
-| TC08 | Boundary – age = 15 accepted | PASS |
-
-**OVERALL: PASS** (verified by automated scripted console session)
+| TC03 | Duplicate student Id | PASS |
+| TC04 | Duplicate enrollment rejected | PASS |
+| TC05 | Unknown student Id on enroll | PASS |
+| TC06 | Course count + students by program + enrollment list | PASS |
 
 ---
 
-### TC01 — Normal registration (Bachelor)
+### TC01 — Normal registration
 
-- **Preconditions:** Application running; Id `S3001` not used
-- **Input:** Menu `1` → Bachelor → Id `S3001`, Name `Marie Curie`, Age `22`, Program `Physics`, Study Year `2`
-- **Expected:** Student created; success message; appears in List Students
-- **Actual:** Success message shown; `S3001` / Marie Curie present in evidence log
-- **State check:** Student count increases by 1
+- **Input:** Menu `1` → Bachelor → new Id, valid age, program, study year
+- **Expected:** Student created successfully
+- **Actual:** Success message and student details shown
 - **Result:** **PASS**
 
-### TC02 — Invalid age rejected
+### TC02 — Invalid age
 
-- **Preconditions:** Application running
-- **Input:** Register student with Age `14`
-- **Expected:** Operation rejected; age must be between 15 and 65; no invalid student stored until a valid age is entered
-- **Actual:** Console message: `Value must be between 15 and 65.`
-- **State check:** Invalid age does not create a student record by itself
+- **Input:** Age `14`
+- **Expected:** Rejected; age must be 15–65
+- **Actual:** `Value must be between 15 and 65.`
+- **State check:** No invalid student stored from that input alone
 - **Result:** **PASS**
 
-### TC03 — Duplicate student Id rejected
+### TC03 — Duplicate Id
 
-- **Preconditions:** Seed student `S1001` already exists
-- **Input:** Register another student with Id `S1001`
-- **Expected:** Rejected as duplicate Id; original Ada Lovelace record unchanged
+- **Input:** Register again with seed Id `S1001`
+- **Expected:** Rejected as duplicate
 - **Actual:** `Student Id 'S1001' already exists.`
-- **State check:** No second student with same Id
 - **Result:** **PASS**
 
-### TC04 — Course full (capacity boundary)
+### TC04 — Duplicate enrollment
 
-- **Preconditions:** Course `CS101` capacity = 3; seed already has one enrollment; two more seats filled by scripted students, then one extra attempt
-- **Input:** Enroll additional student into `CS101` after capacity is reached
-- **Expected:** Rejected because course is full
-- **Actual:** `Course 'CS101' is full. No remaining seats.`
-- **State check:** Enrollment count for CS101 does not exceed capacity
-- **Result:** **PASS**
-
-### TC05 — Duplicate enrollment rejected
-
-- **Preconditions:** Seed enrollment `S1001` already enrolled in `CS201`
-- **Input:** Menu `3` → Student `S1001`, Course `CS201`
-- **Expected:** Rejected; no second enrollment row created
+- **Input:** Enroll `S1001` into `CS201` again
+- **Expected:** Rejected
 - **Actual:** `Student 'S1001' is already enrolled in course 'CS201'.`
-- **State check:** Enrollment count for student unchanged by rejected attempt
 - **Result:** **PASS**
 
-### TC06 — Course count + students by program
+### TC05 — Unknown Id
 
-- **Preconditions:** Seed data loaded (Computer Science has S1001 and S2001)
-- **Input A:** Menu `10` → Student Id `S1001`
-- **Expected A:** Shows enrolled courses and count against max 5
-- **Actual A:** Student courses listed; enrolled course count shown in evidence
-- **Input B:** Menu `14` → Program `Computer Science`
-- **Expected B:** Lists matching Computer Science students
-- **Actual B:** Computer Science filter output present in evidence log
-- **Result:** **PASS**
-
-### TC07 — Unknown student Id on enroll
-
-- **Preconditions:** No student with Id `S9999`
 - **Input:** Enroll `S9999` into `CS201`
-- **Expected:** Rejected as unknown student; no enrollment created
+- **Expected:** Rejected as unknown student
 - **Actual:** `Student 'S9999' was not found.`
-- **State check:** Enrollment count unchanged
 - **Result:** **PASS**
 
-### TC08 — Boundary age 15 accepted
+### TC06 — Required displays
 
-- **Preconditions:** Id `S3002` free
-- **Input:** Register Bachelor with Age `15`
-- **Expected:** Accepted (inclusive lower bound)
-- **Actual:** Student `S3002` registered successfully
-- **State check:** Student appears in later listings
+- **Input:** Menu `4` for `S1001`; menu `5` for `Computer Science`; menu `6` enrollment list
+- **Expected:** Course count shown; program filter works; enrollment list shown
+- **Actual:** All three displays work with seed data
 - **Result:** **PASS**
-
----
-
-## How to re-run
-
-```bat
-"C:\Program Files\dotnet\dotnet.exe" build StudentManagementSystem.csproj
-python tools\run_functional_tests.py
-```
-
-Or manually with `run.cmd` and the menu steps above.

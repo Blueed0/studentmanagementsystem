@@ -116,27 +116,23 @@ def build_report() -> Path:
 
     add_md_file(doc, DOCS / "REPORT.md")
     doc.add_page_break()
-    add_heading(doc, "Appendix A — UML Class Diagram Notes", 1)
+    add_heading(doc, "Appendix A — UML Class Diagram", 1)
     add_md_file(doc, DOCS / "UML_CLASS_DIAGRAM.md")
     doc.add_page_break()
-    add_heading(doc, "Appendix B — Flowcharts", 1)
-    add_md_file(doc, DOCS / "FLOWCHART.md")
-    doc.add_page_break()
-    add_heading(doc, "Appendix C — Test Cases", 1)
+    add_heading(doc, "Appendix B — Test Cases", 1)
     add_md_file(doc, DOCS / "TEST_CASES.md")
 
     evidence = DOCS / "TEST_RUN_SUMMARY.txt"
     if evidence.exists():
         doc.add_page_break()
-        add_heading(doc, "Appendix D — Automated Test Run Summary", 1)
+        add_heading(doc, "Appendix C — Test Run Summary", 1)
         add_para(doc, evidence.read_text(encoding="utf-8"))
 
     raw = DOCS / "TEST_EVIDENCE.txt"
     if raw.exists():
         doc.add_page_break()
-        add_heading(doc, "Appendix E — Console Test Evidence (excerpt)", 1)
+        add_heading(doc, "Appendix D — Console Test Evidence (excerpt)", 1)
         content = raw.read_text(encoding="utf-8", errors="replace")
-        # keep a reasonable excerpt
         excerpt = content if len(content) < 12000 else content[:12000] + "\n...[truncated]..."
         for block in excerpt.splitlines():
             p = doc.add_paragraph(block)
@@ -145,10 +141,10 @@ def build_report() -> Path:
                 run.font.size = Pt(8)
 
     doc.add_page_break()
-    add_heading(doc, "Appendix F — Member Contributions", 1)
+    add_heading(doc, "Appendix E — Member Contributions", 1)
     add_md_file(doc, DOCS / "MEMBER_CONTRIBUTIONS.md")
     doc.add_page_break()
-    add_heading(doc, "Appendix G — AI-Use Statement", 1)
+    add_heading(doc, "Appendix F — AI-Use Statement", 1)
     add_md_file(doc, DOCS / "AI_USE_STATEMENT.md")
 
     out = OUT_DIR / "01_Student_Management_System_REPORT.docx"
@@ -171,7 +167,6 @@ def main() -> None:
         build_report(),
         build_standalone("TEST_CASES.md", "01_TEST_CASES.docx"),
         build_standalone("UML_CLASS_DIAGRAM.md", "01_UML_CLASS_DIAGRAM.docx"),
-        build_standalone("FLOWCHART.md", "01_FLOWCHART.docx"),
         build_standalone("MEMBER_CONTRIBUTIONS.md", "01_MEMBER_CONTRIBUTIONS.docx"),
         build_standalone("AI_USE_STATEMENT.md", "01_AI_USE_STATEMENT.docx"),
         build_standalone("REPORT.md", "01_REPORT_BODY.docx"),

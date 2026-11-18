@@ -1,49 +1,37 @@
-namespace StudentManagementSystem.Models // Lisans öğrencisi modelinin bulunduğu isim alanı
+namespace StudentManagementSystem.Models
 {
-    // BachelorStudent: Student soyut sınıfından türeyen lisans öğrencisi sınıfı
-    public class BachelorStudent : Student // Kalıtım ile ortak öğrenci davranışını yeniden kullanır
+    public class BachelorStudent : Student
     {
-        // _studyYear: Lisans öğrencisinin bulunduğu sınıf yılını tutan özel alan
-        private int _studyYear; // 1–4 aralığında olmalıdır; gerçek değer constructor'da atanır
+        private int _studyYear;
 
-        // StudyYear: Lisans yılı bilgisini doğrulayarak dışarı açan özellik
-        public int StudyYear // 1, 2, 3 veya 4 olabilir
+        public int StudyYear
         {
-            get { return _studyYear; } // Private alandaki yılı okur
-            set // Atama sırasında aralık doğrulaması yapar
+            get { return _studyYear; }
+            set
             {
-                // Yıl 1'den küçük veya 4'ten büyükse geçersizdir
-                if (value < 1 || value > 4) // Dahil sınırlar dışını reddeder
+                if (value < 1 || value > 4)
                 {
-                    // Geçersiz yıl için ArgumentException fırlatılır
-                    throw new ArgumentException("Study year must be between 1 and 4 (inclusive)."); // Net iş kuralı mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Study year must be between 1 and 4 (inclusive).");
+                }
 
-                // Geçerli yılı private alana yazar
-                _studyYear = value; // Doğrulanmış değeri saklar
-            } // StudyYear setter'ının sonu
-        } // StudyYear özelliğinin sonu
+                _studyYear = value;
+            }
+        }
 
-        // BachelorStudent yapıcı metodu: Temel Student alanlarını ve StudyYear'ı başlatır
-        public BachelorStudent(string id, string fullName, int age, string degreeProgram, int studyYear) // public: dışarıdan örnek oluşturulabilir
-            : base(id, fullName, age, degreeProgram) // base(...): üst sınıf yapıcısını çağırarak ortak alanları kurar
+        public BachelorStudent(string id, string fullName, int age, string degreeProgram, int studyYear)
+            : base(id, fullName, age, degreeProgram)
         {
-            // StudyYear property setter'ı üzerinden yılı doğrula ve ata
-            StudyYear = studyYear; // 1–4 dışı değerler burada reddedilir
-        } // BachelorStudent yapıcı metodunun sonu
+            StudyYear = studyYear;
+        }
 
-        // GetAcademicLevel: Lisans seviyesini polimorfik olarak döndürür
-        public override string GetAcademicLevel() // abstract metodun zorunlu uygulaması
+        public override string GetAcademicLevel()
         {
-            // Bu öğrenci türünün akademik seviyesini sabit metin olarak bildirir
-            return "Bachelor"; // Polimorfizm örneği: runtime'da bu sürüm çağrılır
-        } // GetAcademicLevel metodunun sonu
+            return "Bachelor";
+        }
 
-        // GetStudentDetails: Lisansa özgü StudyYear bilgisini de ekleyerek ayrıntı üretir
-        public override string GetStudentDetails() // virtual metodu ezer (override)
+        public override string GetStudentDetails()
         {
-            // Üst sınıf özetine lisans yılı bilgisini ekler
-            return $"{base.GetStudentDetails()} | Study Year: {StudyYear}"; // base. ile ortak detayı yeniden kullanır
-        } // GetStudentDetails metodunun sonu
-    } // BachelorStudent sınıfının sonu
-} // StudentManagementSystem.Models isim alanının sonu
+            return $"{base.GetStudentDetails()} | Study Year: {StudyYear}";
+        }
+    }
+}

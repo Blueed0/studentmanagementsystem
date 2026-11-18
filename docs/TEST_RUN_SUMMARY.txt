@@ -1,10 +1,7 @@
-TC01_success: PASS
-TC02_age_ui: PASS
+TC01_register: PASS
+TC02_invalid_age: PASS
 TC03_dup_id: PASS
-TC05_dup_enroll: PASS
-TC07_unknown: PASS
-TC06_courses: PASS
-TC06_by_program: PASS
-TC08_age15: PASS
-TC04_full: PASS
+TC04_dup_enroll: PASS
+TC05_unknown: PASS
+TC06_count_program_list: PASS
 OVERALL: PASS

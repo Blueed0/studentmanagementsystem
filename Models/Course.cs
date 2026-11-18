@@ -1,98 +1,70 @@
-using StudentManagementSystem.Interfaces; // IIdentifiable arayüzünü kullanmak için gerekli using
+using StudentManagementSystem.Interfaces;
 
-namespace StudentManagementSystem.Models // Ders modelinin bulunduğu isim alanı
+namespace StudentManagementSystem.Models
 {
-    // Course: Üniversitedeki bir dersi temsil eden sınıf
-    public class Course : IIdentifiable // IIdentifiable sözleşmesini uygular
+    public class Course : IIdentifiable
     {
-        // _id: Ders kodunu (benzersiz kimlik) tutan özel alan
-        private string _id = string.Empty; // Başlangıç değeri; gerçek kod constructor'da atanır
+        private string _id = string.Empty;
+        private string _title = string.Empty;
+        private int _capacity;
 
-        // _title: Ders başlığını tutan özel alan
-        private string _title = string.Empty; // Nullable uyarısını önlemek için güvenli başlangıç
-
-        // _capacity: Dersin maksimum kontenjanını tutan özel alan
-        private int _capacity; // Sıkı pozitif olmalıdır (> 0)
-
-        // Id: Ders kodunu kapsüllenmiş şekilde dışarı açan özellik
-        public string Id // IIdentifiable.Id sözleşmesini karşılar
+        public string Id
         {
-            get { return _id; } // Private ders kodunu okur
-            private set // Kod yalnızca yapıcı üzerinden atanabilir
+            get { return _id; }
+            private set
             {
-                // Ders kodu boş/null/whitespace ise reddet
-                if (string.IsNullOrWhiteSpace(value)) // Geçersiz kod kontrolü
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    // Boş kod için ArgumentException fırlatılır
-                    throw new ArgumentException("Course Id (code) cannot be empty."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Course Id (code) cannot be empty.");
+                }
 
-                // Geçerli kodu kırpılmış halde saklar
-                _id = value.Trim(); // Tutarlı kimlik saklama
-            } // Id setter'ının sonu
-        } // Id özelliğinin sonu
+                _id = value.Trim();
+            }
+        }
 
-        // Title: Ders başlığını doğrulayarak yöneten özellik
-        public string Title // Boş olamaz
+        public string Title
         {
-            get { return _title; } // Private başlığı okur
-            set // Atamada boş değer kontrolü yapar
+            get { return _title; }
+            set
             {
-                // Başlık boş/null/whitespace ise reddet
-                if (string.IsNullOrWhiteSpace(value)) // Zorunlu alan doğrulaması
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    // Geçersiz başlık için ArgumentException fırlatılır
-                    throw new ArgumentException("Course title cannot be empty."); // Net hata mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Course title cannot be empty.");
+                }
 
-                // Geçerli başlığı kırpılmış halde saklar
-                _title = value.Trim(); // Tutarlı metin saklama
-            } // Title setter'ının sonu
-        } // Title özelliğinin sonu
+                _title = value.Trim();
+            }
+        }
 
-        // Capacity: Ders kontenjanını doğrulayarak yöneten özellik
-        public int Capacity // Sıkı pozitif (> 0) olmalıdır
+        public int Capacity
         {
-            get { return _capacity; } // Private kontenjanı okur
-            set // Atamada pozitiflik kontrolü yapar
+            get { return _capacity; }
+            set
             {
-                // Kontenjan 0 veya negatifse geçersizdir
-                if (value <= 0) // > 0 kuralını uygular
+                if (value <= 0)
                 {
-                    // Geçersiz kontenjan için ArgumentException fırlatılır
-                    throw new ArgumentException("Course capacity must be greater than 0."); // Net iş kuralı mesajı
-                } // if bloğunun sonu
+                    throw new ArgumentException("Course capacity must be greater than 0.");
+                }
 
-                // Geçerli kontenjanı private alana yazar
-                _capacity = value; // Doğrulanmış değeri saklar
-            } // Capacity setter'ının sonu
-        } // Capacity özelliğinin sonu
+                _capacity = value;
+            }
+        }
 
-        // Course yapıcı metodu: Ders alanlarını doğrulayarak başlatır
-        public Course(string id, string title, int capacity) // public: dışarıdan örnek oluşturulabilir
+        public Course(string id, string title, int capacity)
         {
-            // Id property setter'ı üzerinden ders kodunu doğrula ve ata
-            Id = id; // Boş kodlar burada reddedilir
+            Id = id;
+            Title = title;
+            Capacity = capacity;
+        }
 
-            // Title property setter'ı üzerinden başlığı doğrula ve ata
-            Title = title; // Boş başlıklar burada reddedilir
-
-            // Capacity property setter'ı üzerinden kontenjanı doğrula ve ata
-            Capacity = capacity; // <= 0 değerler burada reddedilir
-        } // Course yapıcı metodunun sonu
-
-        // GetCourseDetails: Ders bilgilerini tek satırlık metin olarak döndürür
-        public string GetCourseDetails() // Listeleme ve arama ekranlarında kullanılır
+        public string GetCourseDetails()
         {
-            // Ders kodu, başlık ve kontenjanı biçimlendirilmiş metin olarak üretir
-            return $"Code: {Id} | Title: {Title} | Capacity: {Capacity}"; // Tutarlı özet formatı
-        } // GetCourseDetails metodunun sonu
+            return $"Code: {Id} | Title: {Title} | Capacity: {Capacity}";
+        }
 
-        // ToString: Konsolda Course yazdırılırken anlamlı metin gösterir
-        public override string ToString() // Object.ToString'i ezer
+        public override string ToString()
         {
-            // Detay metodunu yeniden kullanarak tutarlı çıktı sağlar
-            return GetCourseDetails(); // Aynı formatı kullanır
-        } // ToString metodunun sonu
-    } // Course sınıfının sonu
-} // StudentManagementSystem.Models isim alanının sonu
+            return GetCourseDetails();
+        }
+    }
+}

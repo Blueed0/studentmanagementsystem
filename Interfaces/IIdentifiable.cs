@@ -1,9 +1,8 @@
-namespace StudentManagementSystem.Interfaces // Projenin arayüz (interface) dosyalarının bulunduğu isim alanı
+namespace StudentManagementSystem.Interfaces
 {
-    // IIdentifiable: Temel varlıkların benzersiz bir kimliğe (Id) sahip olmasını zorunlu kılar
-    public interface IIdentifiable // Ortak kimlik sözleşmesini tanımlayan arayüz
+    // Shared contract: every identifiable entity exposes a read-only Id.
+    public interface IIdentifiable
     {
-        // Id özelliği: Varlığın benzersiz kimliğini salt-okunur olarak dışarıya açar
-        string Id { get; } // Sadece get; kimliğin dışarıdan değiştirilmesini engeller
-    } // IIdentifiable arayüzünün sonu
-} // StudentManagementSystem.Interfaces isim alanının sonu
+        string Id { get; }
+    }
+}
