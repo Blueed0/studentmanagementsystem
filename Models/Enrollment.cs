@@ -1,3 +1,4 @@
+// Models isim alani: Veri modellerinin bulundugu katman
 namespace StudentManagementSystem.Models
 {
     // Enrollment: Bir öğrenci ile bir ders arasındaki ilişkiyi (association) tutan sınıf

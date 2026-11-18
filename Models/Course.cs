@@ -1,5 +1,7 @@
+// IIdentifiable arayuzunu kullanmak icin
 using StudentManagementSystem.Interfaces;
 
+// Models isim alani: Veri modellerinin bulundugu katman
 namespace StudentManagementSystem.Models
 {
     // Course: Üniversitedeki bir dersi temsil eder

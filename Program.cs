@@ -1,6 +1,9 @@
+// Models: Student, Course, Enrollment gibi veri siniflarini kullanmak icin
 using StudentManagementSystem.Models;
+// Services: UniversityManager is kurallarini kullanmak icin
 using StudentManagementSystem.Services;
 
+// StudentManagementSystem: Uygulamanin ana isim alani
 namespace StudentManagementSystem
 {
     // Program: Konsol uygulamasının giriş noktası; menü ve kullanıcı etkileşimini yönetir

@@ -1,5 +1,7 @@
+// IIdentifiable arayuzunu kullanmak icin
 using StudentManagementSystem.Interfaces;
 
+// Models isim alani: Veri modellerinin bulundugu katman
 namespace StudentManagementSystem.Models
 {
     // Student: Tüm öğrenci türlerinin ortak özelliklerini tutan soyut (abstract) temel sınıf

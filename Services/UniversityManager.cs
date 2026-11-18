@@ -1,5 +1,7 @@
+// Models katmanindaki siniflari kullanmak icin
 using StudentManagementSystem.Models;
 
+// Services: Is kurallarini yoneten servis katmani isim alani
 namespace StudentManagementSystem.Services
 {
     // UniversityManager: Öğrenci, ders ve kayıt işlemlerini yöneten servis sınıfı
@@ -18,8 +20,11 @@ namespace StudentManagementSystem.Services
         // UniversityManager yapıcısı: Boş koleksiyonlarla sistemi başlatır
         public UniversityManager()
         {
+            // Bos ogrenci listesi olusturur
             _students = new List<Student>();
+            // Bos ders listesi olusturur
             _courses = new List<Course>();
+            // Bos enrollment listesi olusturur
             _enrollments = new List<Enrollment>();
         }
 

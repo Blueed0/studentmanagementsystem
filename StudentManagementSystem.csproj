@@ -1,11 +1,27 @@
+<!--
+  StudentManagementSystem.csproj
+  Bu dosya projenin derleme ayarlarını tutar.
+  Amaç: Uygulamanın nasıl derleneceğini ve çalışacağını SDK'ya bildirmek.
+-->
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- OutputType=Exe: Konsol uygulaması (exe) üretileceğini belirtir -->
     <OutputType>Exe</OutputType>
+
+    <!-- TargetFramework=net8.0: Proje .NET 8 ile derlenir -->
     <TargetFramework>net8.0</TargetFramework>
+
+    <!-- ImplicitUsings: Sık kullanılan using'leri otomatik ekler (System, System.Collections.Generic vb.) -->
     <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Nullable: Null güvenlik uyarılarını açar (string? gibi) -->
     <Nullable>enable</Nullable>
+
+    <!-- RootNamespace: Kaynak kodların varsayılan isim alanı -->
     <RootNamespace>StudentManagementSystem</RootNamespace>
+
+    <!-- AssemblyName: Üretilen exe/dll dosya adı -->
     <AssemblyName>StudentManagementSystem</AssemblyName>
   </PropertyGroup>
 

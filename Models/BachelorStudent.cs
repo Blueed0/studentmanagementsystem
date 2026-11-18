@@ -1,3 +1,4 @@
+// Models isim alani: Veri modellerinin bulundugu katman
 namespace StudentManagementSystem.Models
 {
     // BachelorStudent: Lisans öğrencisini temsil eder; Student sınıfından kalıtım alır

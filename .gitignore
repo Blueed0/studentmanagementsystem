@@ -1,10 +1,31 @@
+# ============================================================
+# .gitignore
+# Bu dosya Git'e eklenmemesi gereken dosya/klasorleri belirtir.
+# Amac: Derleme artiklarinin ve gecici dosyalarin repoya girmesini engellemek.
+# ============================================================
+
+# bin/: Derlenmis cikti dosyalari (exe/dll)
 bin/
+
+# obj/: Ara derleme dosyalari
 obj/
+
+# publish/: Self-contained yayin ciktilari (buyuk exe paketleri)
 publish/
+
+# .vs/: Visual Studio yerel ayarlari
 .vs/
+
+# *.user / *.suo: Kullaniciya ozel IDE ayarlari
 *.user
 *.suo
+
+# .DS_Store: macOS klasor meta dosyasi
 .DS_Store
+
+# __pycache__ / *.pyc: Python ara dosyalari (tools betikleri icin)
 __pycache__/
 *.pyc
+
+# .idea/: JetBrains/Rider yerel ayarlari
 .idea/

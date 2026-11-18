@@ -1,3 +1,4 @@
+// Interfaces isim alani: Ortak arayuzlerin bulundugu katman
 namespace StudentManagementSystem.Interfaces
 {
     // IIdentifiable: Kimliği olan varlıklar için ortak arayüz sözleşmesi
