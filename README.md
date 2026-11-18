@@ -47,10 +47,19 @@ Interactive menu needs `-it` / TTY. Stop with menu option `0` or `Ctrl+C`.
 
 ## How to run with .NET SDK
 
-From the project folder:
+Install [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0), then from the project folder:
+
+**Windows:**
 
 ```bat
 run.cmd
+```
+
+**macOS / Linux:**
+
+```bash
+chmod +x run.sh
+./run.sh
 ```
 
 Or:
@@ -59,7 +68,24 @@ Or:
 dotnet run --project StudentManagementSystem.csproj
 ```
 
+### No .NET on the other PC? (Windows)
+
+On a PC that **has** .NET 8 SDK, create a standalone EXE:
+
+```bat
+publish-win.cmd
+```
+
+Then copy `publish\win-x64\StudentManagementSystem.exe` to the other computer and double-click it. No SDK install needed there.
+
 Sample fictional data is loaded at startup so the menu can be demonstrated immediately.
+
+### Common fix if `run.cmd` fails on another PC
+
+1. Install **.NET 8 SDK** (not only Visual Studio)
+2. Open a new terminal and run `dotnet --version`
+3. Run `run.cmd` again from the project folder (not from a random zip path with broken files)
+4. If still stuck, use Docker (`run-docker.cmd`) or the standalone EXE from `publish-win.cmd`
 
 ## Project structure
 
